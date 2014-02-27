@@ -23,8 +23,13 @@ proc( '_location_standardize', @location ){
 	return( @location )
 }
 #~<<<
-#~>>>#	_spawn_hologram( @location, @lines, @alignment = 0.3 )
-proc( '_spawn_hologram', @location, @lines, @alignment = 0.3 ){
+#~>>>#	_spawn_hologram( @lines, @location = null, @alignment = 0.3 )
+proc( '_spawn_hologram', @lines, @location = null, @alignment = 0.3 ){
+	if( is_null( @location ) && ponline( player() )){
+		@location	= ploc()
+	}else{
+		return( false )
+	}
 	@location	= _location_standardize( @location )
 	array_reverse( @lines )
 	@idRaw		= null
@@ -163,8 +168,13 @@ proc( '_get_hologram_loc', @id ){
 	}
 }
 #~<<<
-#~>>>#	_set_hologram_loc( @id, @location )
-proc( '_set_hologram_loc', @id, @location ){
+#~>>>#	_set_hologram_loc( @id, @location = null )
+proc( '_set_hologram_loc', @id, @location = null ){
+	if( is_null( @location ) && ponline( player() )){
+		@location	= ploc()
+	}else{
+		return( false )
+	}
 	@location	= _location_standardize( @location )
 	@idraw		= @id
 	@id			= @id. '_id'
