@@ -25,10 +25,12 @@ proc( '_location_standardize', @location ){
 #~<<<
 #~>>>#	_spawn_hologram( @lines, @location = null, @alignment = 0.3 )
 proc( '_spawn_hologram', @lines, @location = null, @alignment = 0.3 ){
-	if( is_null( @location ) && ponline( player() )){
-		@location	= ploc()
-	}else{
-		return( false )
+	if( is_null( @location )) {
+		if ( ponline( player() )){
+			@location	= ploc()
+		}else{
+			return( false )
+		}
 	}
 	@location	= _location_standardize( @location )
 	array_reverse( @lines )
