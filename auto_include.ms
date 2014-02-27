@@ -195,7 +195,7 @@ proc( '_set_hologram_loc', @id, @location = null ){
 		}
 		array_reverse( @lines )
 		if( _remove_hologram( @idraw )){
-			if( _spawn_hologram( @location, @lines, @holograms[@id]['alignment'] ) != false ){
+			if( _spawn_hologram( @lines, @location, @holograms[@id]['alignment'] ) != false ){
 				return( true )
 			}else{
 				return( false )
@@ -239,7 +239,7 @@ proc( '_set_hologram_text', @id, @textArray ){
 	if( is_array( @holograms ) && array_index_exists( @holograms, @id )){
 		@location	= @holograms[@id]['location']
 		_remove_hologram( @idraw )
-		if( _spawn_hologram( @location, @textArray, @holograms[@id]['alignment'] ) != false ){
+		if( _spawn_hologram( @textArray, @location, @holograms[@id]['alignment'] ) != false ){
 			return( true )
 		}else{
 			return( false )
