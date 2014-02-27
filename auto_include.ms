@@ -47,16 +47,16 @@ proc( '_spawn_hologram', @lines, @location = null, @alignment = 0.3 ){
 	if( is_null( @idRaw )){
 		@idRaw	= array_size( @holograms )
 	}
-	@id										= @idRaw. '_id'
-	@newLoc									= array()
-	@holograms[@id]							= array()
-	@holograms[@id]['id']					= @idRaw
-	@holograms[@id]['entities']				= array()
-	@holograms[@id]['location']				= array()
+	@id						= @idRaw. '_id'
+	@newLoc						= array()
+	@holograms[@id]					= array()
+	@holograms[@id]['id']				= @idRaw
+	@holograms[@id]['entities']			= array()
+	@holograms[@id]['location']			= array()
 	@holograms[@id]['alignment']			= @alignment
 	foreach( array_keys( @location ), @key ){
 		@holograms[@id]['location'][@key]	= @location[@key]
-		@newLoc[@key]						= @location[@key]
+		@newLoc[@key]				= @location[@key]
 	}
 	if( !has_bind( 'hologram' )){
 		bind( 'entity_damage', array( 'id': 'hologram' ), array( 'type': 'HORSE' ), @event ){
@@ -218,7 +218,7 @@ proc( '_get_hologram_text', @id ){
 #~>>>#	_set_hologram_text( @id, @textArray )
 proc( '_set_hologram_text', @id, @textArray ){
 	@idraw			= @id
-	@id				= @id. '_id'
+	@id			= @id. '_id'
 	@lines			= array()
 	@server			= reg_replace( '[^a-zA-Z0-9_]', '', get_server_info()[0] )
 	@holograms		= get_value( @server. '.holograms' )
